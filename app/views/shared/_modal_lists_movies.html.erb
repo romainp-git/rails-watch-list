@@ -1,4 +1,4 @@
-<div id="modal-lists-movies" class="modal hidden" data-movie-tooltip-target="modal">
+<div id="modal-lists-movies" class="modal hidden" data-movie-tooltip-target="modal" data-movie-has-errors="<%= @bookmark&.errors&.any? %>">
   <div class="modal-content">
     <div class="modal-header">
       <h2>Enregistrer dans...</h2>
@@ -10,13 +10,6 @@
         <%= f.input :list_id, collection: @lists, prompt: "Select a list", :label_html => { :class => 'input-field' } %>
         <%= f.hidden_field :movie_id, value: "", data: { movie_tooltip_target: "id" }, :label_html => { :class => 'input-field' } %>
         <%= f.button :submit, class: "btn-red" %>
-      <% end %>
-
-      <% if @bookmark&.errors&.any? %>
-        <script>
-          const modal = document.getElementById("modal-lists-movies");
-          modal.classList.remove("hidden");
-        </script>
       <% end %>
     </div>
   </div>

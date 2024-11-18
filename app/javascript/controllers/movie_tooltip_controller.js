@@ -4,7 +4,13 @@ export default class extends Controller {
   static targets = ["tooltip", "id", "title", "overview", "genres", "modal"];
 
   connect() {
+    console.log("hello")
     this.timeoutId = null;
+    const hasErrors = this.modalTarget.dataset.movieHasErrors === "true";
+
+    if (hasErrors) {
+      this.open();
+    }
   }
 
   show(event) {
@@ -45,8 +51,8 @@ export default class extends Controller {
     clearTimeout(this.timeoutId);
   }
 
-  toggle() {
-    this.modalTarget.classList.toggle("hidden");
+  open() {
+    this.modalTarget.classList.remove("hidden");
   }
 
   close() {
