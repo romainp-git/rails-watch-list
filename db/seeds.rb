@@ -10,13 +10,17 @@
 #
 
 # 1. Clean the database
+#
+require 'dotenv/load'
 puts "Cleaning database..."
 Bookmark.destroy_all
 Movie.destroy_all
 Genre.destroy_all
+api_key = ENV['TMDB_API_KEY']
+p api_key
 
 # 2. Call API & create Genres 🏗️
-response = RestClient.get "https://api.themoviedb.org/3/genre/movie/list", {:Authorization => 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiZTAyOWU3NWE3ZDU2MjhkZTU0MzcyNGRkYzE5MTk0OCIsIm5iZiI6MTczMTY4MTkzMS45NTYzNywic3ViIjoiNjczNWNjOThmZjg1ODgxMzkzYTA5OGQ4Iiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.gg0KV2_cvDsSetnSbfV2cwSHUulj_-0gOMgfsVoNOF8'}
+response = RestClient.get "https://api.themoviedb.org/3/genre/movie/list", {:Authorization => api_key}
 GENRES = JSON.parse(response)['genres']
 
 puts "Creating genres..."
@@ -25,11 +29,13 @@ GENRES.each do |genre|
 end
 
 # 3. Call API & create Movies 🏗️
-response = RestClient.get "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=true&language=fr-FR&sort_by=popularity.desc", {:Authorization => 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiZTAyOWU3NWE3ZDU2MjhkZTU0MzcyNGRkYzE5MTk0OCIsIm5iZiI6MTczMTY4MTkzMS45NTYzNywic3ViIjoiNjczNWNjOThmZjg1ODgxMzkzYTA5OGQ4Iiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.gg0KV2_cvDsSetnSbfV2cwSHUulj_-0gOMgfsVoNOF8'}
+response = RestClient.get "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=true&language=fr-FR&sort_by=popularity.desc", {:Authorization => api_key}
 movies = JSON.parse(response)
 
 puts "Creating movies..."
 movies["results"].each do | movie_data |
+  movie_data['overview'] = "Aucune description disponible." if movie_data['overview'] == ""
+
   movie = Movie.create!(
     title: movie_data['title'],
     overview: movie_data['overview'],

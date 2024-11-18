@@ -12,6 +12,7 @@ gem "simple_form"
 gem "sassc-rails"
 gem "faker"
 gem 'rest-client'
+gem 'dotenv-rails', groups: [:development, :test]
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
