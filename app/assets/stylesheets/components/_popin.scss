@@ -1,0 +1,89 @@
+.tooltip {
+  position: absolute;
+  width: 300px;
+  background-color: #222;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  padding: 15px;
+  transition: transform 0.3s ease-in-out;
+  z-index: 20;
+  overflow: visible;
+}
+
+
+.tooltip-dropdown {
+  margin-top: 10px;
+}
+
+.dropdown-label {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.dropdown-select {
+  width: 100%;
+  padding: 8px 10px;
+  font-size: 0.9rem;
+  border-radius: 5px;
+  border: 1px solid #444;
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.dropdown-select:focus {
+  outline: none;
+  border-color: #555;
+}
+
+.tooltip-details p {
+  display: -webkit-box;
+  line-clamp: 3;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.9rem;
+  margin: 5px 0;
+}
+
+.tooltip {
+  transition: top 0.3s ease, left 0.3s ease, opacity 0.3s ease;
+}
+
+.tooltip.hidden {
+  opacity: 0;
+}
+
+.tooltip:not(.hidden) {
+  opacity: 1;
+}
+
+.dropdown-menu {
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+  background: #333;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  display: none;
+}
+
+.dropdown-menu:not(.hidden) {
+  display: block;
+}
+
+.dropdown-item {
+  padding: 10px 15px;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.dropdown-item:hover {
+  background: #444;
+}

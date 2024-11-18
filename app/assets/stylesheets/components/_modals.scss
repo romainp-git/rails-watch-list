@@ -1,0 +1,84 @@
+#modal-lists-movies.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+#modal-lists-movies.modal:not(.hidden) {
+  visibility: visible;
+  pointer-events: auto;
+}
+
+#modal-lists-movies .modal-content {
+  background-color: #222;
+  color: #fff;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+#modal-lists-movies .modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #444;
+  padding-bottom: 10px;
+}
+
+#modal-lists-movies .modal-header h2 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+#modal-lists-movies .modal-close {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+#modal-lists-movies .modal-body {
+  margin-top: 15px;
+}
+
+#modal-lists-movies .list-options {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#modal-lists-movies .list-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+#modal-lists-movies textarea {
+  color: #fff;
+}
+
+#modal-lists-movies select {
+  color: #fff;
+}
+
+#modal-lists-movies .list-item label {
+  color: #fff;
+}
+
+#modal-lists-movies .modal-footer {
+  margin-top: 15px;
+  text-align: right;
+}

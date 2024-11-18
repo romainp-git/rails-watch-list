@@ -1,0 +1,36 @@
+<div data-controller="movie-tooltip">
+  <%= render "shared/modal_lists_movies" %>
+
+  <div id="dynamic-tooltip" class="tooltip hidden"  data-movie-tooltip-target="tooltip" data-action="mouseover->movie-tooltip#keepVisible mouseleave->movie-tooltip#hide">
+    <div class="tooltip-header">
+      <h3 id="tooltip-title" data-movie-tooltip-target="title">Title</h3>
+    </div>
+    <div class="tooltip-dropdown">
+      <button class="btn-red"
+              data-action="click->movie-tooltip#toggle">Add to list</button>
+    </div>
+    <div class="tooltip-details">
+      <p data-movie-tooltip-target="overview">Info</p>
+      <p data-movie-tooltip-target="genres">Genres</p>
+    </div>
+  </div>
+
+  <% @genres.each do |genre| %>
+    <% if genre.movies.any? %>
+      <h4 class="p-3"><%= genre.name %></h4>
+      <div class="cards overflow-y-scroll">
+        <% genre.movies.each do |movie| %>
+          <div class="card-container"
+              data-title="<%= movie.title %>"
+              data-overview="<%= movie.overview %>"
+              data-genres="<%= movie.genres.map(&:name).join(', ') %>"
+              data-image="<%= movie.poster_url %>"
+              data-id="<%= movie.id %>"
+              data-action="mouseover->movie-tooltip#show mouseleave->movie-tooltip#hide">
+            <div class="card" style="background-image: url('<%= movie.poster_url %>')"></div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

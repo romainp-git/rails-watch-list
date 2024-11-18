@@ -1,0 +1,25 @@
+<div class="top-10-container">
+  <h2>Top 10 TV Shows in France Today</h2>
+
+  <div class="thumbnails">
+    <% @movies.first(10).each_with_index do |movie, index| %>
+      <div class="thumbnail">
+        <span class="rank"><%= index + 1 %></span>
+        <img src="<%= movie.poster_url %>" alt="">
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+<% @lists.each do |list| %>
+  <%= link_to list_path(list), class:"text-decoration-none text-white" do%>
+  <h4 class="p-3"><%= list.name %></h4>
+  <% end %>
+  <div class="cards overflow-y-scroll">
+    <% list.bookmarks.each do | bookmark | %>
+      <div class="card" style="background-image: url(<%= bookmark.movie.poster_url %>)">
+      </div>
+    <% end %>
+  </div>
+<% end %>

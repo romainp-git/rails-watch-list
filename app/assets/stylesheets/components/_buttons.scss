@@ -1,0 +1,40 @@
+.btn-red {
+  font-weight: bold;
+  padding:8px 15px;
+  background-color: red;
+  border-radius: 5px;
+  color:white;
+  border: solid 2px;
+  border-color: red;
+}
+
+.btn-red:hover {
+  background-color: rgba(255, 0, 0, 0.3);
+  border: solid 1px;
+  border-color: red;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  transition: all 0.5s ease-in-out;
+}
+
+.btn {
+  font-size: 1rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.play-btn {
+  background-color: #fff;
+  color: #000;
+}
+
+.more-info-btn {
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #fff;
+}

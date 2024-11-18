@@ -1,0 +1,23 @@
+<div id="modal-lists-movies" class="modal hidden" data-movie-tooltip-target="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Enregistrer dans...</h2>
+      <button class="modal-close" data-action="click->movie-tooltip#close">✕</button>
+    </div>
+    <div class="modal-body text-white">
+      <%= simple_form_for @bookmark do |f| %>
+        <%= f.input :comment, :as => :text, :input_html => { 'rows' => 5, 'cols' => 10 }, :label_html => { :class => 'input-field' } %>
+        <%= f.input :list_id, collection: @lists, prompt: "Select a list", :label_html => { :class => 'input-field' } %>
+        <%= f.hidden_field :movie_id, value: "", data: { movie_tooltip_target: "id" }, :label_html => { :class => 'input-field' } %>
+        <%= f.button :submit, class: "btn-red" %>
+      <% end %>
+
+      <% if @bookmark&.errors&.any? %>
+        <script>
+          const modal = document.getElementById("modal-lists-movies");
+          modal.classList.remove("hidden");
+        </script>
+      <% end %>
+    </div>
+  </div>
+</div>
