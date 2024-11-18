@@ -10,14 +10,12 @@
 #
 
 # 1. Clean the database
-#
-require 'dotenv/load'
+
 puts "Cleaning database..."
 Bookmark.destroy_all
 Movie.destroy_all
 Genre.destroy_all
 api_key = ENV['TMDB_API_KEY']
-p api_key
 
 # 2. Call API & create Genres 🏗️
 response = RestClient.get "https://api.themoviedb.org/3/genre/movie/list", {:Authorization => api_key}
